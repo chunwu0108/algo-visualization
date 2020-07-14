@@ -1,0 +1,12 @@
+canvas {
+    border-style: solid;
+}
+
+.grid {
+    display: table;
+    margin: 0 auto;
+}
+
+.main {
+    width: 100%;
+}

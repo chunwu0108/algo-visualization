@@ -1,0 +1,23 @@
+.node {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin: -2px 0px;
+    outline: 1px solid grey;
+}
+
+.node-c1 {
+    background-color: white;
+}
+
+.node-c2 {
+    background-color: blue;
+}
+
+.node-c3 {
+    background-color: black;
+}
+
+.node-c4 {
+    background-color: red;
+}

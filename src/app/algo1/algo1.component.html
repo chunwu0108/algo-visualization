@@ -1,0 +1,12 @@
+<div class="main">
+
+    <h2>My Map</h2>
+
+    <div class="grid">
+        <tr *ngFor="let row of map.arr">
+            <td class="grid.x" *ngFor="let node of row">
+                <span class="node node-c{{node.state}}"></span>
+            </td>
+        </tr>
+    </div>
+</div>
