@@ -56,6 +56,7 @@ export class Dijkstra {
         let minDistance = Infinity;
         let currNode = lastNode;
         let minNode: NodeComponent;
+        ans.push(lastNode);
         while(minDistance > 0){
             this.directions.forEach(dir => {
                 let node = grid.getNode(currNode.x + dir[0], currNode.y + dir[1]);
