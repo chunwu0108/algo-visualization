@@ -74,7 +74,8 @@ export class Algo1Component implements OnInit {
   onMouseDown(row:number, col:number){
     this.mouseIsPressed = true;
     if(this.mode == Mode.SET_WALLS){
-      this.map.arr[row][col].state = State.Wall
+      if(this.map.arr[row][col].state === State.Empty)
+        this.map.arr[row][col].state = State.Wall;
     }
     if(this.mode == Mode.SET_START){
       this.start.state = State.Empty
@@ -90,8 +91,8 @@ export class Algo1Component implements OnInit {
 
   onMouseOver(row:number, col:number){
     if(this.mode == Mode.SET_WALLS){
-      if(this.mouseIsPressed)
-      this.map.arr[row][col].state = State.Wall;
+      if(this.mouseIsPressed && this.map.arr[row][col].state === State.Empty)
+        this.map.arr[row][col].state = State.Wall;
     }
   }
 
