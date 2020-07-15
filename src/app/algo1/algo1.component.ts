@@ -45,10 +45,14 @@ export class Algo1Component implements OnInit {
     for(let i = 0; i < nodelist.length; i++){
 
       // delay n time until after last visted node is done?
-      if(i === nodelist.length-1){
-        setTimeout(() => {
-          this.animeShortestPath(shortestPathNodes);
-        }, 11 * i)
+      
+      if(i === nodelist.length-1 ){
+        // check if the last node is the target
+        if(shortestPathNodes[shortestPathNodes.length-1] === this.target){
+          setTimeout(() => {
+            this.animeShortestPath(shortestPathNodes);
+          }, 11 * i)
+        }
       }
 
       setTimeout(() => {
