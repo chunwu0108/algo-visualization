@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Algo2Component } from './algo2/algo2.component';
 import { NodeComponent } from './algo1/node/node.component';
+import { AlgorithmsComponent } from './algorithms/algorithms.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NodeComponent } from './algo1/node/node.component';
     Algo1Component,
     DashboardComponent,
     Algo2Component,
-    NodeComponent
+    NodeComponent,
+    AlgorithmsComponent
   ],
   imports: [
     BrowserModule,

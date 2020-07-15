@@ -1,11 +1,18 @@
 <div class="main">
 
     <h2>My Map</h2>
-
+    <div>
+        <button (click)="setMode(4); dijkstra()">Calc dijkstra</button>
+        <button (click)="setMode(1)">Set Start</button>
+        <button (click)="setMode(2)">Set Target</button>
+        <button (click)="setMode(3)">Set Walls</button>
+        <button (click)="reset()">Reset</button>
+    </div>
+    <br>
     <div class="grid">
         <tr *ngFor="let row of map.arr">
-            <td class="grid.x" *ngFor="let node of row">
-                <span class="node node-c{{node.state}}"></span>
+            <td class="grid.x" *ngFor="let col of row">
+                <div id="node-{{col.x}}-{{col.y}}" class="node node-c{{col.state}}" (mousedown)="onMouseDown(col.y, col.x)" (mouseover)="onMouseOver(col.y, col.x)" (mouseup)="onMouseUp()"></div>
             </td>
         </tr>
     </div>

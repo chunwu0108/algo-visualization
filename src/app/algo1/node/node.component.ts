@@ -8,17 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class NodeComponent implements OnInit {
 
   public state:State;
+  public distance:number;
+  public x:number;
+  public y:number;
 
   constructor() {
     this.state = State.Empty
+    this.distance = -1;
   }
 
   set_state(st:State){
     this.state = st;
   }
 
-  ngOnInit() {
-  }
+
+  ngOnInit() { }
 
 }
 
@@ -27,5 +31,7 @@ export enum State{
   Start = 2,
   Wall = 3,
   Target = 4,
+  Visited = 5,
+  Path = 6,
 }
 
