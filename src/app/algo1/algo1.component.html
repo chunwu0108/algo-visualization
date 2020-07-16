@@ -1,12 +1,63 @@
-<div class="main">
+<div class="content">
 
-    <h2>My Map</h2>
     <div>
-        <button (click)="setMode(4); dijkstra()">Calc dijkstra</button>
-        <button (click)="setMode(1)">Set Start</button>
-        <button (click)="setMode(2)">Set Target</button>
-        <button (click)="setMode(3)">Set Walls</button>
-        <button (click)="reset()">Reset</button>
+        <h2>My Map</h2>
+        <div class=card-container>
+            <div class="card card-small" (click)="setMode(4); dijkstra()" tabindex="0">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                <span>Calc dijkstra</span>
+            </div>
+
+            <div class="card card-small" (click)="setMode(1)" tabindex="0">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>/></svg>
+
+                <span>Set Start</span>
+            </div>
+            <div class="card card-small" (click)="setMode(2)">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>/></svg>
+                <span>Set Target</span>
+            </div>
+            <div class="card card-small" (click)="setMode(3)">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>/></svg>
+
+                <span>Set Walls</span>
+            </div>
+            <div class="card card-small" (click)="reset()">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+
+                <span>Reset</span>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div>
+                <img src="../../assets/img/home.svg" width="24" height="24">
+                <span>Home</span>
+            </div>
+            <div class="spacer"></div>
+            <div>
+                <img src="../../assets/img/target.svg" width="24" height="24">
+                <span>Target</span>
+            </div>
+            <div class="spacer"></div>
+            <div>
+                <div class="node node-c5"></div>
+                <span class="legend">Visited</span>
+            </div>
+            <div class="spacer"></div>
+            <div>
+                <div class="node node-c3"></div>
+                <span class="legend">Wall</span>
+            </div>
+            <div class="spacer"></div>
+            <div>
+                <div class="node node-c6"></div>
+                <span class="legend">Shortest Path</span>
+            </div>
+
+
+
+        </div>
     </div>
     <br>
     <div class="grid">

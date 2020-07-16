@@ -29,8 +29,7 @@ p {
     margin: -8px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
-    color: white;
+    color: rgb(58, 58, 58);
     font-weight: 600;
 }
 
@@ -185,6 +184,10 @@ a:hover {
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
+}
+
+.legend {
+    margin: 15px;
 }
 
 .circle-link {

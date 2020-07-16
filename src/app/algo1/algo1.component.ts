@@ -5,7 +5,7 @@ import { Dijkstra } from '../algorithms/dijkstra'
 @Component({
   selector: 'app-algo1',
   templateUrl: './algo1.component.html',
-  styleUrls: ['./algo1.component.css', './node/node.component.css']
+  styleUrls: ['./algo1.component.css', './node/node.component.css', '../app.component.css']
 })
 
 
