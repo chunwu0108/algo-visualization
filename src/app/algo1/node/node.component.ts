@@ -33,5 +33,8 @@ export enum State{
   Target = 4,
   Visited = 5,
   Path = 6,
+  Mid = 7,
+  Visited2 = 8,
+  Flash = 9,
 }
 

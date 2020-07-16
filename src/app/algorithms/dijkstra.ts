@@ -5,20 +5,22 @@ import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 export class Dijkstra {
 
 
-    private unvisited = new Set<NodeComponent>();
+    private unvisited : Set<NodeComponent>;
     private current: NodeComponent;
-    private solution_path = new Array<NodeComponent>();
-    private directions = new Array<[number, number]>();
-    private visitedNodesOrder = new Array<NodeComponent>();
+    private directions : Array<[number, number]>;
+    private visitedNodesOrder : Array<NodeComponent>;
         
 
     solve(grid:Map, start:NodeComponent, target:NodeComponent){
 
+        this.unvisited = new Set<NodeComponent>();
         this.init_nodes(grid);
-        this.directions.push([1,0], [0,1], [-1, 0], [0, -1]);
         this.current = start;
         this.current.distance = 0;
-        
+        this.directions = new Array<[number, number]>();
+        this.directions.push([1,0], [0,1], [-1, 0], [0, -1]);
+        this.visitedNodesOrder = new Array<NodeComponent>();
+
         while(true){
             
             // cal distance

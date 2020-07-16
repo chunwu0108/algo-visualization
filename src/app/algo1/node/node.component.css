@@ -28,12 +28,7 @@
 .node-c3 {
     animation-name: wall;
     animation-duration: 0.1s;
-    animation-timing-function: ease-out;
-    animation-delay: 0;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-play-state: running;
 }
 
 .node-c4 {
@@ -54,12 +49,7 @@
 .node-c5 {
     animation-name: visited-1;
     animation-duration: 1.5s;
-    animation-timing-function: ease-out;
-    animation-delay: 0;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-play-state: running;
 }
 
 .node-c6 {
@@ -68,12 +58,58 @@
     background-color: yellow;
 }
 
+.node-c7 {
+    background-image: url(../../../assets/img/mid.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-name: spath;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+.node-c8 {
+    animation-name: visited-2;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.node-c9 {
+    animation-name: flash;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
 @keyframes spath {
     20% {
         background-color: rgb(0, 255, 119);
     }
     100% {
         background-color: yellow;
+    }
+}
+
+@keyframes flash {
+    0% {
+        transform: scale(.3);
+        background-color: rgba(37, 37, 37, 0.75);
+        border-radius: 100%;
+    }
+    50% {
+        background-color: rgba(88, 88, 88, 0.75);
+    }
+    75% {
+        transform: scale(1.2);
+        background-color: rgba(177, 177, 177, 0.75)
+    }
+    100% {
+        transform: scale(1.0);
+        background-color: rgba(255, 255, 255, 0.75);
     }
 }
 
@@ -93,6 +129,25 @@
     100% {
         transform: scale(1.0);
         background-color: rgba(67, 233, 255, 0.75);
+    }
+}
+
+@keyframes visited-2 {
+    0% {
+        transform: scale(.3);
+        background-color: rgba(41, 4, 24, 0.75);
+        border-radius: 100%;
+    }
+    50% {
+        background-color: rgba(97, 0, 61, 0.75);
+    }
+    75% {
+        transform: scale(1.2);
+        background-color: rgba(216, 5, 135, 0.75)
+    }
+    100% {
+        transform: scale(1.0);
+        background-color: rgba(255, 67, 208, 0.75);
     }
 }
 
