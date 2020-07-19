@@ -130,11 +130,19 @@ export class Des {
         [46,  42,  50,  36,  29,  32]
     ]
 
-    generate_secret_key():string{
+    generate_secret_key(size: number):string{
 
+        let sKey = "";
+        let r;
+
+        for(let i = 0; i < size; i++){
+            // ascii 126 = last printable char and 33 is first
+            r = Math.floor(Math.random() * Math.floor(127 - 33)) + 33; 
+            sKey += String.fromCharCode(r)
+        }
 
         //check parity
-        return ""
+        return sKey
     }
 
     parity_check(sKey_str: string):Boolean{

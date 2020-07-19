@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Des } from './des';
+import { TriDes } from './tri-des';
  
 @Component({
   selector: 'app-algo2',
@@ -10,6 +11,7 @@ export class Algo2Component implements OnInit {
 
   @ViewChild('raw_in', {static: false}) raw_in:ElementRef;
   @ViewChild('cipher_in', {static: false}) cip_in:ElementRef;
+  @ViewChild('skey', {static: false}) skey_in:ElementRef;
 
   constructor() {
     
@@ -46,22 +48,12 @@ export class Algo2Component implements OnInit {
     return s;
   }
 
+  get_sKey(){
+    let des = new Des();
+    this.skey_in.nativeElement.value = des.generate_secret_key(24);
+  }
+
   compute(){
-
-    let d = new Des();
-    let bin = "00010011 00110100 01010111 01111001 10011011 10111100 11011111 11110001"
-    let key = this.bin2block(bin)
-
-    let block = new Uint8Array([56, 13, 65, 132, 12, 41, 1, 54]);
-    //let e_block = d.encrypt_block(block, keys[0]);
-    let e_block = d.encrypt(key, "hi my name isasfesaggesag");
-
-    
-
-    let r_block = d.decrypt(block, e_block);
-    console.log(r_block);
-
-W
 
     let curr_raw = this.raw_in.nativeElement.value;
     let curr_cip = this.cip_in.nativeElement.value;
@@ -70,6 +62,29 @@ W
       alert("Please clear 'Text' or 'Cipher Text' to continue")
       return
     }
+
+    let tdes = new TriDes();
+    let des = new Des();
+
+    let tkey = new Uint8Array(24);
+    let tkey_blocks = des.str2block(this.skey_in.nativeElement.value);
+    tkey.set(tkey_blocks[0]);
+    tkey.set(tkey_blocks[1], 8);
+    tkey.set(tkey_blocks[2], 16);
+    
+    if(curr_raw === ""){
+      let e_block = tdes.decrypt(tkey, this.cip_in.nativeElement.value);
+      this.raw_in.nativeElement.value = e_block;
+    }
+
+    if(curr_cip === ""){
+      let e_block = tdes.encrypt(tkey, this.raw_in.nativeElement.value);
+      this.cip_in.nativeElement.value = e_block;
+    }
+
+
+
+
   }
 
   clear(type:number){
@@ -77,7 +92,6 @@ W
       this.raw_in.nativeElement.value = '';
     if(type === 1)
       this.cip_in.nativeElement.value = '';
-
   }
 
 }
