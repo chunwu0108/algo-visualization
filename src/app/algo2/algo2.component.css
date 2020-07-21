@@ -6,8 +6,8 @@
 .textbox-display {
     padding: 0;
     margin: 20px;
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 400px;
     position: relative;
     left: 0;
     outline: none;
@@ -36,7 +36,6 @@
 
 .qr-show {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 38%;
+    float: right;
+    margin: 0 auto;
 }
