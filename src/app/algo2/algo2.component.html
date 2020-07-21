@@ -23,20 +23,24 @@
     </div>
     <div>
         <div class="input-box">
-            <span>Insert Secret Key:</span>
-            <input style="margin: 10px; width: 500px;" (keyup)="onKey($event)" id="key" #skey>
+            <span>Insert Secret Key (192-bit hex):</span>
+            <input style="margin: 10px; width: 430px;" (keyup)="onKey($event)" id="key" #skey>
         </div>
-        <div class=des-textbox>
-            <div class=des-textbox-content>
+        <div class="des-textbox">
+            <div class="des-textbox-content">
                 <span>Text:</span>
             </div>
-            <div class=des-textbox-content>
+            <div class="des-textbox-content">
                 <span>Cipher Text:</span>
             </div>
         </div>
         <div>
             <textarea class="textbox-display" id="raw" #raw_in></textarea>
             <textarea class="textbox-display" id="cip" #cipher_in></textarea>
+        </div>
+        <div id="qr-code" class="qr-hide">
+            <span>Cipher QR Code:</span>
+            <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
     </div>
 

@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.9",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
     "angular-cli-ghpages": "^0.6.2",
+    "angularx-qrcode": "^2.1.4",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "rxjs": "~6.4.0",

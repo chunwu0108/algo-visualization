@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Algo2Component } from './algo2/algo2.component';
 import { NodeComponent } from './algo1/node/node.component';
 import { AlgorithmsComponent } from './algorithms/algorithms.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,12 @@ import { AlgorithmsComponent } from './algorithms/algorithms.component';
     DashboardComponent,
     Algo2Component,
     NodeComponent,
-    AlgorithmsComponent
+    AlgorithmsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

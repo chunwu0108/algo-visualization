@@ -25,3 +25,18 @@
     left: 0px;
     margin-left: 20px;
 }
+
+.qr-hide {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38%;
+    display: none;
+}
+
+.qr-show {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38%;
+}
