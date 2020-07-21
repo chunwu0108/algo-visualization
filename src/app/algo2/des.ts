@@ -136,9 +136,8 @@ export class Des {
         let r;
 
         for(let i = 0; i < size; i++){
-            // ascii 126 = last printable char and 33 is first
-            r = Math.floor(Math.random() * Math.floor(127 - 33)) + 33; 
-            sKey += String.fromCharCode(r)
+            r = Math.floor(Math.random() * Math.floor(255));
+            sKey += this.decimalToHex(r, 2);
         }
 
         //check parity
@@ -156,7 +155,7 @@ export class Des {
         let blocks = this.str2block(raw_text);
         let cipher_blocks = new Array<Uint8Array>();
         let temp_block, swap_block;
-        
+
         // generate 16 48bits temp keys
         let temp_keys = this.generate_subkeys(sKey);
         
@@ -183,16 +182,15 @@ export class Des {
             cipher_blocks.push(temp_block);
 
         }
-
-        // turn cipher block into cipher text
-        return this.block2str(cipher_blocks);
+        // turn cipher block into cipher text in hex
+        return this.block2hex(cipher_blocks);
 
     }
 
     decrypt(sKey:Uint8Array, cipher_text:string){
 
         // divide cipher text into blocks
-        let blocks = this.str2block(cipher_text);
+        let blocks = this.hex2block(cipher_text);
         let text_blocks = new Array<Uint8Array>();
         let temp_block, swap_block;
 
@@ -219,7 +217,7 @@ export class Des {
         
             text_blocks.push(temp_block);
         }
-        // turn cipher block into cipher text
+        // turn cipher block into plain text
         return this.block2str(text_blocks).trim();
 
     }
@@ -257,15 +255,64 @@ export class Des {
         return result;
     }
 
+    hex2block(str: string): Uint8Array[]{
+
+        let block = new Uint8Array(8);
+        let result = new Array<Uint8Array>();
+        let byte;
+        let blocks_needed = Math.floor((str.length/2) / 8) + 1;
+
+        for(let i = 1; i <= blocks_needed*8; i++){
+
+            if(i*2 >= str.length+1){
+                block[(i-1) % 8] = 32; // fill it with spaces
+                continue;
+            }
+
+            byte = parseInt(str.substring((i-1)*2, i*2), 16);
+
+            if(i % 8 === 0){
+                block[(i-1) % 8] = byte;
+                result.push(block);
+                block = new Uint8Array(8);
+            }else{
+                block[(i-1) % 8] = byte;
+            }
+        }
+
+        // add last block if not added
+        // which is when str.length is not multiple of 8
+        if(str.length % 8 !== 0)
+            result.push(block);
+
+        return result;
+    }
+
+    private decimalToHex(d, padding) {
+        let hex = Number(d).toString(16);
+        padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+    
+        while (hex.length < padding) {
+            hex = "0" + hex;
+        }
+        return hex;
+    }
+
+    block2hex(blocks: Uint8Array[]): string{
+
+        let result = "";
+        for(let block of blocks)
+            block.forEach(x => result += this.decimalToHex(x, 2));
+        return result;
+    }
+
     block2str(blocks: Uint8Array[]): string{
 
         let result = "";
         for(let block of blocks)
             block.forEach(x => result += String.fromCharCode(x));
-
         return result;
     }
-
 
     des_f(block: Uint8Array, temp_key:Uint8Array) : Uint8Array{
 

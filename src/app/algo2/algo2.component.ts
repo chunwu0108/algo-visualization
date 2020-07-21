@@ -67,7 +67,8 @@ export class Algo2Component implements OnInit {
     let des = new Des();
 
     let tkey = new Uint8Array(24);
-    let tkey_blocks = des.str2block(this.skey_in.nativeElement.value);
+    let tkey_blocks = des.hex2block(this.skey_in.nativeElement.value);
+    console.log(tkey_blocks)
     tkey.set(tkey_blocks[0]);
     tkey.set(tkey_blocks[1], 8);
     tkey.set(tkey_blocks[2], 16);
@@ -81,9 +82,6 @@ export class Algo2Component implements OnInit {
       let e_block = tdes.encrypt(tkey, this.raw_in.nativeElement.value);
       this.cip_in.nativeElement.value = e_block;
     }
-
-
-
 
   }
 
