@@ -11,6 +11,8 @@ import { NodeComponent } from './algo1/node/node.component';
 import { AlgorithmsComponent } from './algorithms/algorithms.component';
 import { QRCodeModule } from 'angularx-qrcode';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { QRCodeModule } from 'angularx-qrcode';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    QRCodeModule
+    QRCodeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

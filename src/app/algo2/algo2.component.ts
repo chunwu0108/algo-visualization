@@ -27,7 +27,7 @@ export class Algo2Component implements OnInit {
   onKey(event: any){
     let target = event.target || event.srcElement || event.currentTarget;
     let obj_id = target.attributes.id.value;
-
+    this.key_qrdata = this.skey_in.nativeElement.value;
     //live update cipher? and text?
 
   }
