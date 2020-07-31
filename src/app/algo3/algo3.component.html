@@ -1,0 +1,75 @@
+<div class="content">
+
+    <h2>Sudoku Solver</h2>
+    <div>
+        <app-alertbox></app-alertbox>
+    </div>
+    <div class="subcontent">
+        <div class="sidebar">
+
+            <div class=card-container>
+                <div class="w-75">
+                    <span>Slots to fill: {{gen_ranger.value}}</span>
+                    <input type="range" min="10" max="65" value="20" #gen_ranger>
+                </div>
+                <div class="card card-small" (click)="generate_grid()" tabindex="0" style="width: 150px;">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                    <span>Generate</span>
+                </div>
+                <div class="w-75">
+                    <span>Speed: {{1500 - ms_ranger.value}} (ms)</span>
+                    <input class="reverseRange" type="range" min="0" max="1500" value="1450" #ms_ranger (input)="set_ms(ms_ranger.value)">
+                </div>
+                <div class="card card-small" (click)="solve()" tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                    <span>Solve</span>
+                </div>
+                <div class="card card-small" (click)="pause_resume_algo()" tabindex="0" style="width: 250px;">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                    <span>Pause/Resume</span>
+                </div>
+                <div class="card card-small" (click)="step_algo()" tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                    <span>Step</span>
+                </div>
+                <div class="card card-small" (click)="clear_solution()" tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
+                    <span>Clear</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="grid">
+            <tr *ngFor="let row of grid.content">
+                <td class="grid-row" *ngFor="let col of row">
+                    <span id="node-{{col.x}}-{{col.y}}" class="node node-{{col.state}}" (mousedown)="onMouseDown(col.x, col.y)">
+                    {{col.get_value()}}
+                </span>
+                </td>
+            </tr>
+        </div>
+        <div class="sidebar">
+            <div>
+                <div style="height: 90%;">
+                    Available Numbers:
+                    <p *ngFor="let n of grid.ptr_avail_set">
+                        {{ n }}
+                    </p>
+                </div>
+                <div style="height: 90%;">
+                    Wrong Numbers:
+                    <p class="strike" *ngFor="let n of grid.ptr_wrong_set">
+                        {{ n }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

@@ -12,6 +12,8 @@ import { AlgorithmsComponent } from './algorithms/algorithms.component';
 import { QRCodeModule } from 'angularx-qrcode';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Algo3Component } from './algo3/algo3.component';
+import { AlertboxComponent } from './algo3/alertbox/alertbox.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     Algo2Component,
     NodeComponent,
     AlgorithmsComponent,
+    Algo3Component,
+    AlertboxComponent,
   ],
   imports: [
     BrowserModule,
