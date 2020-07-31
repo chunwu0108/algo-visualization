@@ -83,7 +83,6 @@ tr:nth-child(3n) td {
 }
 
 .grid {
-    outline: 3px solid rgb(39, 39, 39);
     margin: 0 auto;
     border-collapse: collapse;
 }

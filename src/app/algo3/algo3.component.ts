@@ -31,14 +31,17 @@ export class Algo3Component implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) { 
     let key = +event.key;
 
-    if(key > 0 && key <= 9 && this.grid.edit_ptr !== null)
-      this.grid.set(this.grid.edit_ptr, key)
+    if(key > 0 && key <= 9 && this.grid.edit_ptr !== null){
+      this.grid.unset(this.grid.edit_ptr);
+      this.grid.set(this.grid.edit_ptr, key);
+      this.grid.update_sets(this.grid.edit_ptr);
+    }
   }
 
   onMouseDown(x:number, y:number){
     if(!this.algo.solving){
       this.grid.set_edit_ptr(x, y)
-
+      this.grid.update_sets(this.grid.edit_ptr)
     }
   }
 

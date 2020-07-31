@@ -139,11 +139,13 @@ export class SudoGrid {
             x = x % this.SIZE;
         }
 
+        if(val === this.content[y][x].get_value())
+            return
+
         //return -1 if can't insert (set contain value)
         //check if in sets
         if(!this.available_set(x, y).has(val)){
             console.log("Can't set", val, "here")
-            this.content[y][x].set_value(null);
             return;
         }
     
@@ -164,7 +166,12 @@ export class SudoGrid {
         this.emptySlots -= 1
 
     }
-    unset(x: number, y: number){
+    unset(x: number, y?: number){
+
+        if(typeof y === 'undefined'){
+            y = Math.floor(x / this.SIZE);
+            x = x % this.SIZE;
+        }
 
         let val = this.content[y][x].get_value()
 
@@ -201,9 +208,14 @@ export class SudoGrid {
         }
     }
 
-    update_sets(){
-        let y = Math.floor(this.pointer / this.SIZE);
-        let x = this.pointer % this.SIZE;
+    update_sets(ptr? : number){
+        let curr_ptr;
+        if(ptr)
+            curr_ptr = ptr;
+        else
+            curr_ptr = this.pointer;
+        let y = Math.floor(curr_ptr / this.SIZE);
+        let x = curr_ptr % this.SIZE;
         this.ptr_avail_set = this.available_set(x, y);
         this.ptr_wrong_set = this.content[y][x].get_invalid();
     }

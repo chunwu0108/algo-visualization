@@ -8,9 +8,6 @@
     <div class="modal-body">
         Description goes here
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
 </ng-template>
 
 <ng-template #no_solution let-modal>
@@ -23,5 +20,3 @@
 </ng-template>
 
 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Help</button>
-
-<pre>{{ closeResult }}</pre>
