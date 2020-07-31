@@ -57,7 +57,7 @@ export class Algo3Component implements OnInit {
       let found_solution = this.algo.solve(true);
       if(!found_solution){
         //solution not found
-
+        alert("no solution, resetting (add modal here)")
         this.grid.reset()
       }
     }
