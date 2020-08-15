@@ -1,6 +1,9 @@
 <div class="content">
 
     <h2>Message Encryption (Triple DES w/ 3TDEA Key Length)</h2>
+    <div style="margin-bottom: 20px;">
+        <app-alertbox className="algo2"></app-alertbox>
+    </div>
     <div>
         <div class=card-container>
             <div class="card card-small" (click)="get_sKey()" tabindex="0" style="width: 200px;">
@@ -52,6 +55,70 @@
                 <span>Cipher QR Code:</span>
                 <qrcode [qrdata]="cip_qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h3>Algorithm Analysis</h3>
+        <div class="text">Given a message of size <b>m</b> bytes, and <b>n</b> blocks (n = m / 8 bytes per block). It takes <b>O(1)</b> per block for DES, therefore it takes:</div>
+        <h5>O(3 x 1 x n) ≈ <b>O(n)</b></h5>
+    </div>
+
+    <div class="content">
+        <h3>Algorithm</h3>
+        <h5>DES tables can be found <a class="text" href="https://en.wikipedia.org/wiki/DES_supplementary_material">here</a></h5>
+        <div class="text">
+            1.) Divide the <b>192 bit</b> key in to <b>3 parts</b> (0-63, 64-127, 128-191) and divide input text or cipher into blocks of 64bit (pad spaces to last block).
+        </div>
+        <div class="text">
+            2.) <a class="text" href="https://en.wikipedia.org/wiki/DES_supplementary_material#Key_Generation">Generate </a> <b>16</b>, 48-bit subkeys from the <i>first</i> 64bit key
+        </div>
+        <div class="text">
+            3.) Encrypt each block by applying <i>initial permutation</i>, apply the <a class="text" href="https://en.wikipedia.org/wiki/Feistel_cipher#/media/File:Feistel_cipher_diagram_en.svg">Feistel</a> function for 16 rounds with the subkeys generated
+            from
+            <b>step 2</b>.
+        </div>
+        <div class="text">
+            4.) Split the block in half, 32bit each, and swap them. Apply <i>final permutation</i>. Repeat <b>step 3</b> for the next block until empty.
+        </div>
+        <div class="text">
+            5.) First DES is done. Repeat <b>step 2</b> with <i>second</i> 64bit key from <b>step 1</b>, but <b>decrypt</b> the cipher from <i>first</i> DES Encryption.
+        </div>
+        <div class="text">
+            Note: Decrypting DES can be done by reversing the Feistel 16 rounds, i.e using the 16th key first ... 1st key last.
+        </div>
+        <div class="text">
+            6.) Second layer of DES is done. Repeat <b>step 2</b> with <i>third</i> 64bit key from <b>step 1</b>, but <b>encrypt</b> the cipher from second DES Encryption.
+        </div>
+        <div class="text">
+            7.) Done. Decrypting Triple DES can be done by reversing the 3 layer of DES.
+        </div>
+        <br>
+        <h5>Encryption: ciphetext = <var>E<sub>K3</sub></var>(<var>D<sub>K2</sub></var>(<var>E<sub>K1</sub></var>)))</h5>
+        <h5>Decryption: plaintext = <var>D<sub>K1</sub></var>(<var>E<sub>K2</sub></var>(<var>D<sub>K3</sub></var>)))</h5>
+        <br>
+        <div class="text">
+            <ol> Feistel Function (k for k in subkeys):
+                <li>Split 64bit block in half, <b>left</b> and <b>right</b>, 32bit each</li>
+                <li>Expand <i>right</i> block to 48 bit using the <i>expansion table</i></li>
+                <li>(YELLOW F below) XOR <i>result</i> with the k-th subkey</li>
+                <li>(YELLOW F below) Apply <i>result</i> with the <a class="text" href="https://en.wikipedia.org/wiki/DES_supplementary_material#Substitution_boxes_(S-boxes)">sBoxs </a></li>
+                <li>(YELLOW F below) Shuffle <i>result</i> with this <a class="text" href="https://en.wikipedia.org/wiki/DES_supplementary_material#Permutation_(P)">permutation </a></li>
+                <li>XOR <i>result</i> with the <i>left</i> block</li>
+                <li>Return join(<i>result</i>, <i>left</i> block)</li>
+            </ol>
+        </div>
+        <img src="assets/img/feistel.png" class="img-fluid" style="box-shadow: 0 0 3px 2px #282a2d; width: 400px;">
+    </div>
+
+    <div class="content">
+        <h3>Challenges</h3>
+        <div class="text">
+            <ul>
+                <li>Expansion and compression can be VERY VERY tricky with bitwise operations... I would suggest drawing out how to extract bits that you need.</li>
+                <li>Bug tracking can be a nuisance, so please write test cases to make sure every function is working the way you EXPECT it to.</li>
+                <li>Make sure to follow a consistant algorithm. I've experienced slightly different algorithm from sites to site, tiny difference can change everything in the cryptography.</li>
+            </ul>
         </div>
     </div>
 

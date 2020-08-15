@@ -1,8 +1,6 @@
 
 import {SudoGrid} from '../algo3/sudo-grid'
 import { State } from '../algo3/node'
-import { Algo3Component } from '../algo3/algo3.component'
-import { ifStmt } from '@angular/compiler/src/output/output_ast';
 
 export class Backtracking {
 

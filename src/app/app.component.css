@@ -55,6 +55,14 @@ p {
     align-items: center;
 }
 
+.text {
+    width: 700px;
+    margin: 0 auto;
+    align-items: left;
+    text-align: left;
+    font-size: large;
+}
+
 svg.material-icons {
     height: 24px;
     width: auto;
@@ -149,6 +157,7 @@ a:hover {
     text-decoration: none;
 }
 
+a.text:visited,
 a:hover {
     color: #125699;
 }

@@ -63,7 +63,6 @@ p.strike {
 .grid-row {
     vertical-align: middle;
     height: 100%;
-    display: inline-block;
 }
 
 td:first-child {
@@ -85,6 +84,7 @@ tr:nth-child(3n) td {
 .grid {
     margin: 0 auto;
     border-collapse: collapse;
+    display: table;
 }
 
 @keyframes gen {

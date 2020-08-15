@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener} from '@angular/core';
 import { SudoGrid } from './sudo-grid'
 import { Backtracking } from '../algorithms/backtracking'
-import { AlertboxComponent } from './alertbox/alertbox.component'
 
 
 @Component({
@@ -31,9 +30,10 @@ export class Algo3Component implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) { 
     let key = +event.key;
 
-    if(key > 0 && key <= 9 && this.grid.edit_ptr !== null){
+    if(key >= 0 && key <= 9 && this.grid.edit_ptr !== null){
       this.grid.unset(this.grid.edit_ptr);
-      this.grid.set(this.grid.edit_ptr, key);
+      if(key !== 0 )
+        this.grid.set(this.grid.edit_ptr, key);
       this.grid.update_sets(this.grid.edit_ptr);
     }
   }

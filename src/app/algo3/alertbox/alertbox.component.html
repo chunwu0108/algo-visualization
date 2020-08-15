@@ -1,4 +1,4 @@
-<ng-template #content let-modal>
+<ng-template #algo3content let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Description</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -6,7 +6,43 @@
     </button>
     </div>
     <div class="modal-body">
-        Description goes here
+        Sudoku is a logic-based, combinatorial number-placement puzzle. The objective or a solution is to fill each column, each row, and each of the nine 3×3 subgrids contain all of the digits from 1 to 9.
+    </div>
+    <div class="modal-body">
+        This tool visualizes the backtracking algorithm which solves any solvable Sudoku board. You can start by generating a board with the number of desired filled slots, and click "Solve" to visualize. The speed can be adjusted at anytime.
+    </div>
+    <div class="modal-body">
+        (Optional) You can also click on each individual slot and enter a number from 1-9 to set. 0 to unset.
+    </div>
+</ng-template>
+
+<ng-template #algo2content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Description</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        Triple DES or Triple Data Encryption Algorithm, is a symmetric-key block cipher, which applies the DES cipher algorithm three times to each data block.
+    </div>
+    <div class="modal-body">
+        Usage: You can use the <b>Generate</b> button to randomly generate a secret key, share it with your friend via copy+paste OR <b>Show/Hide Key QR</b> to capture a QR code.
+    </div>
+    <div class="modal-body">
+        After entering a message, click <b>Compute</b> to encrypt it. Or if you have an encrypted message, paste it in the Cipher text block, and click <b>Compute</b> to decrypt.
+    </div>
+</ng-template>
+
+<ng-template #algocontent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Description</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        Dijstra: TODO
     </div>
 </ng-template>
 
@@ -19,4 +55,4 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Help</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open()">Help</button>

@@ -1,7 +1,9 @@
 <div class="content">
 
+    <h2>Shortest Path Finder</h2>
+    <app-alertbox className="algo"></app-alertbox>
     <div>
-        <h2>My Map</h2>
+
         <div class=card-container>
             <div class="card card-small" (click)="setMode(4); dijkstra()" tabindex="0">
                 <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M11,16H9V8h2V16z M12,16V8l5,4L12,16z"/>/></svg>
@@ -87,5 +89,25 @@
                 <div id="node-{{col.x}}-{{col.y}}" class="node node-c{{col.state}}" (mousedown)="onMouseDown(col.y, col.x)" (mouseover)="onMouseOver(col.y, col.x)" (mouseup)="onMouseUp()"></div>
             </td>
         </tr>
+    </div>
+
+    <div class="content">
+        <h3>Algorithm Analysis</h3>
+        <div>TODO</div>
+    </div>
+
+    <div class="content">
+        <h3>Algorithm</h3>
+        <div>TODO</div>
+    </div>
+
+    <div class="content">
+        <h3>Challenges</h3>
+        <div class="text">
+            <ul>
+                <li>TODO</li>
+
+            </ul>
+        </div>
     </div>
 </div>

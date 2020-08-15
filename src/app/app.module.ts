@@ -33,6 +33,7 @@ import { AlertboxComponent } from './algo3/alertbox/alertbox.component';
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertboxComponent],
 })
 export class AppModule { }
